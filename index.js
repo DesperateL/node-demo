@@ -3,7 +3,7 @@ var fs = require('fs')
 var url = require('url')
 
 //console.log(Object.keys(http))
-var port = process.env.PORT || 27148;
+var port = process.env.PORT || 19959;
 
 var server = http.createServer(function(request, response){
 
@@ -21,6 +21,10 @@ var server = http.createServer(function(request, response){
     var string = fs.readFileSync('./style.css')
     response.setHeader('Content-Type', 'text/css')
     response.end(string)		
+  }if(path === '/print-style.css'){
+    var string = fs.readFileSync('./print-style.css')
+    response.setHeader('Content-Type', 'text/css')
+    response.end(string)		
   }if(path === '/main.js'){
     var string = fs.readFileSync('./main.js')
     response.setHeader('Content-Type', 'application/javascript')
@@ -32,4 +36,5 @@ var server = http.createServer(function(request, response){
 })
 
 server.listen(port)
-console.log('监听 27148 成功')
+console.log('监听 19959 成功')
+
